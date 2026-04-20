@@ -1,7 +1,7 @@
 Group project for COM212, Spring 2026
---
+---
 Contributors:
-
+-
 Caleb Causey
 
 Nicole Prescott
