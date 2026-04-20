@@ -9,6 +9,7 @@ public class Customer
 	private String email;
 	private int card;
 	private Node next;
+	private Wishlist wlist = new Wishlist[20];
 	
 	public Node(String name0, String email0, int ssn0) 
 	{
