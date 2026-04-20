@@ -1,6 +1,6 @@
 //Customer:
 //A class with identification and methods to change view info
-//Caleb Causey
+
 
 public class Customer
 {
