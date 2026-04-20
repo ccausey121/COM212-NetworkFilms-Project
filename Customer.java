@@ -1,19 +1,20 @@
 //Customer:
 //A class with identification and methods to change view info
+/// Caleb Causey
 
 
 public class Customer
 {
 	private String name;
 	private String email;
-	private int ssn;
+	private int card;
 	private Node next;
 	
 	public Node(String name0, String email0, int ssn0) 
 	{
 		name = name0;
 		email = email0;
-		card = ssn0;
+		card = card0;
 	}
 	public String getName()
 	{
@@ -31,13 +32,13 @@ public class Customer
 	{
 		email = email0;
 	}
-	public void setSSN(int ssn0) 
+	public void setCard(int card0) 
 	{
-		ssn = ssn0;
+		card = card0;
 	}
-	public int getSSN() 
+	public int getCard() 
 	{
-		return ssn;
+		return card;
 	}
 	public void setNext(Node next0)
 	{
