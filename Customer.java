@@ -1,5 +1,5 @@
-//Customer:
-//A class with identification and methods to change view info
+// Customer:
+// A class with identification and methods to change view info
 /// Caleb Causey
 
 
