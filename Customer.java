@@ -41,16 +41,20 @@ public class Customer
 	{
 		return card;
 	}
-	public void setNext(Node next0)
+	public void setRight(Node right0)
 	{
-		next = next0;
+		right = right0;
 	}
-	public Node getNext()
+	public Node getRight()
 	{
-		return next;
+		return right;
 	}
-	public int getKey()
+	public void setLeft(Node left0)
 	{
-		return card %10000;
+		left = left0;
+	}
+	public Node getLeft()
+	{
+		return left;
 	}
 }
