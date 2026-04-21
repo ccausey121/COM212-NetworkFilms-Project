@@ -5,42 +5,58 @@
 public class Movie
 {
 	private String title;
-	private int released;
+	private int releaseDate;
 	private int id;
-	private int tomatoes;
-	private boolean availability;
-	private Node next;
+	private int rating;
+	private boolean available;
 	
-	public Node(String title0, int released0, int id0, int tomatoes0, boolean availability0;) 
-	{
+	public Movie(String title0, int released0, int id0, int rating0, boolean available0;) {
 		title = title0;
-		released = released0;
+		releaseDate = released0;
 		id = id0;
-		tomatoes = tomatoes0;
-		availability = availability0;
+		rating = rating0;
+		available = available0;
 	}
-	public String getTitle()
-	{
+	
+	public String getTitle() {
 		return title;
 	}
-	public void setTitle(String title0) 
-	{
+	
+	public void setTitle(String title0) {
 		title = title0;
 	}
-	public void setReleased(int released0) 
+	
+	public int getReleaseDate() 
 	{
-		released = released0;
+		return releaseDate;
 	}
-	public int getReleased() 
+	public void setReleased(int release0) 
 	{
-		return released;
+		releaseDate = released;
 	}
-	public void setNext(Node next0)
-	{
-		next = next0;
+
+	public int getID() {
+		return id;
 	}
-	public Node getNext()
-	{
-		return next;
+
+	public void setID(int id0) {
+		id = id0;
 	}
+
+	public int getRating() {
+		return rating;
+	}
+
+	public void setRating(int rating0) {
+		rating = rating0;
+	}
+
+	public boolean getAvailable() {
+		return available;
+	}
+
+	public void setAvailable(boolean available0) {
+		available = available0;
+	}
+	
 }
