@@ -19,12 +19,12 @@ public class Wishlist
 	
 	public Movie front()
 	{
-	//returns the first node of Q
+	//returns the first movie of wishlist
 		return q[front];
 	}
 	public Movie dequeue()
 	{
-	//returns and removes the first node of Q
+	//returns and removes the first movie of wishlist
 		int temp = front;
 		front = (front + 1) %20;
 		n--;
@@ -39,12 +39,12 @@ public class Wishlist
 	}
 	public boolean isEmpty()
 	{
-	//returns true if Q is empty and false if it is not
+	//returns true if wishlist is empty and false if it is not
 		return n==0;
 	}
-	public void printQueue() 
+	public void printWishlist() 
 	{
-	// printQueue method for QueueA
+	// printWishlist method for Wishlist
 		int tail = (front + n) % 20;
 		System.out.println(front);
 		System.out.println(tail);
