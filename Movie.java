@@ -1,4 +1,4 @@
-//Nicole, Caleb. Miriam 4/21/26
+//Nicole, Caleb, Miriam 4/21/26
 //This will be our movie class where we will have:
 //titles, release date, unique ID code, rotton tomatoes score, do we have the movie or not?
 
