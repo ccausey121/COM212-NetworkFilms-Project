@@ -1,6 +1,5 @@
-//Movie:
-//A class with identification and methods to change view info
-//Caleb Causey
+//Nicole, Caleb. Miriam 4/21/26
+//This will be our movie class where we will have the titles, release date, unique ID code, rotton tomatoes score, do we have the movie or not?
 
 public class Movie
 {
