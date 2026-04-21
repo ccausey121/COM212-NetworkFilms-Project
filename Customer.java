@@ -40,6 +40,9 @@ public class Customer
 	{
 		return card;
 	}
+
+	// For BST:
+	
 	public void setRight(Node right0)
 	{
 		right = right0;
