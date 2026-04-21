@@ -8,14 +8,14 @@ public class Customer
 	private String email;
 	private int card;
 	private Node next;
-	private Wishlist wlist = new Wishlist[20];
-	
-	public Node(String name0, String email0, int ssn0) 
+	private Wishlist wishlist = new Wishlist[20];
+	public Customer(String name0, String email0, int ssn0) 
 	{
 		name = name0;
 		email = email0;
 		card = card0;
 	}
+	
 	public String getName()
 	{
 		return name;
