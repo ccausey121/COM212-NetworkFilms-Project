@@ -8,9 +8,11 @@
 
 public class Wishlist
 {
-	private Movie q[] = new Movie[20];
+	private Movie q[] = new Movie[20]; // we want to change this line so its not automatically 20 we want it to be empty to start
 	private int n;
 	private int front;
+
+	
 	public Wishlist()
 	{
 		n = 0;
@@ -20,29 +22,39 @@ public class Wishlist
 	public Movie front()
 	{
 	//returns the first movie of wishlist
+	//check if empty and then check what is in the queue and return the front
 		return q[front];
 	}
+	
 	public Movie dequeue()
 	{
 	//returns and removes the first movie of wishlist
+		//check if it is empty first 
 		int temp = front;
-		front = (front + 1) %20;
+		front = (front + 1) % 20;
 		n--;
-		return q[temp];
+		return q[temp]; 
 	}
+	
 	public void enqueue(Movie x)
 	{
 	//x added as the last element
-		int tail = (front + n) %20;
+	// we need to check if the wihlist is full first and then proceed:
+		int tail = (front + n) % 20; //this would be the back of the queue
 		q[tail] = x;
 		n++;
 	}
+	
 	public boolean isEmpty()
 	{
 	//returns true if wishlist is empty and false if it is not
-		return n==0;
+		return n == 0;
 	}
-	public void printWishlist() 
+	
+	public void printWishlist() //we do not have a get Key method so we need to adjust
+	// we want to print the movies in the list
+	//check if it is empty, if not keep going and print
+
 	{
 	// printWishlist method for Wishlist
 		int tail = (front + n) % 20;
