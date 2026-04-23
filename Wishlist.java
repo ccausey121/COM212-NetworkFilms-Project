@@ -62,13 +62,13 @@ public class Wishlist
 		System.out.println(tail);
 		if (front <= tail)
 			for(int i = front; i < tail; i++) 
-				System.out.println(q[i].getId());
+				System.out.println(q[i].getID());
 		else 
 		{
 			for(int i = front; i < 20; i++) 
-				System.out.println(q[i].getId());          
+				System.out.println(q[i].getID());          
 			for(int i = 0; i < tail; i++) 
-				System.out.println(q[i].getId());
+				System.out.println(q[i].getID());
 		}          
 	}
 }
