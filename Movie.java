@@ -30,16 +30,16 @@ public class Movie
 	{
 		return releaseDate;
 	}
-	public void setReleaseDate(int release0) 
+	public void setReleaseDate(int released0) 
 	{
-		releaseDate = released;
+		releaseDate = released0;
 	}
 
-	public int getID() {
+	public int getId() {
 		return id;
 	}
 
-	public void setID(int id0) {
+	public void setId(int id0) {
 		id = id0;
 	}
 
@@ -51,7 +51,7 @@ public class Movie
 		rating = rating0;
 	}
 
-	public boolean getAvailable() {
+	public boolean isAvailable() {
 		return available;
 	}
 
