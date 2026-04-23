@@ -50,7 +50,7 @@ public class Customer
 
 	public Wishlist getWishlist() {
 		return wishlist
-
+	}
 	// For BST:
 	public void setRight(Customer right0)
 	{
