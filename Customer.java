@@ -6,14 +6,21 @@ public class Customer
 {
 	private String name;
 	private String email;
-	private int card;
-	private Node next;
-	private Wishlist wishlist = new Wishlist[20];
-	public Customer(String name0, String email0, int ssn0) 
+	private int card; //going to be 4 digits 
+
+	private Customer left;
+	private Customer right;
+	
+	private Wishlist wishlist = new Wishlist[20]; //may getWishlist function because we need to access movies
+	
+	public Customer(String name0, String email0, int card0) 
 	{
 		name = name0;
 		email = email0;
 		card = card0;
+
+		left = null; //nothing to start
+		right = null; 
 	}
 	
 	public String getName()
@@ -43,19 +50,19 @@ public class Customer
 
 	// For BST:
 	
-	public void setRight(Node right0)
+	public void setRight(Customer right0)
 	{
 		right = right0;
 	}
-	public Node getRight()
+	public Customer getRight()
 	{
 		return right;
 	}
-	public void setLeft(Node left0)
+	public void setLeft(Customer left0)
 	{
 		left = left0;
 	}
-	public Node getLeft()
+	public Customer getLeft()
 	{
 		return left;
 	}
