@@ -7,7 +7,7 @@
 
 public class Wishlist
 {
-	private Movie q[] = new Movie[20]; // we want to change this line so its not automatically 20 we want it to be empty to start
+	private Movie q[] = new Movie[20];
 	private int n;
 	private int front;
 
