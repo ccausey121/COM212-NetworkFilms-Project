@@ -10,7 +10,7 @@ public class Movie
 	private int rating;
 	private boolean available;
 	
-	public Movie(String title0, int released0, int id0, int rating0, boolean available0;) {
+	public Movie(String title0, int released0, int id0, int rating0, boolean available0) {
 		title = title0;
 		releaseDate = released0;
 		id = id0;
@@ -30,7 +30,7 @@ public class Movie
 	{
 		return releaseDate;
 	}
-	public void setReleased(int release0) 
+	public void setReleaseDate(int release0) 
 	{
 		releaseDate = released;
 	}
