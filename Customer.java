@@ -1,6 +1,5 @@
 // Customer:
 // A class with identification and methods to change view info
-/// Caleb Causey
 
 public class Customer
 {
@@ -11,10 +10,11 @@ public class Customer
 	private Customer left;
 	private Customer right;
 	
-	private Wishlist wishlist = new Wishlist[20]; //may getWishlist function because we need to access movies
+	private Wishlist wishlist;
 	
 	public Customer(String name0, String email0, int card0) 
 	{
+		wishlist = new Wishlist(); //this is creating an empty wishlist that we will add movies into 
 		name = name0;
 		email = email0;
 		card = card0;
@@ -48,8 +48,10 @@ public class Customer
 		return card;
 	}
 
+	public Wishlist getWishlist() {
+		return wishlist
+
 	// For BST:
-	
 	public void setRight(Customer right0)
 	{
 		right = right0;
