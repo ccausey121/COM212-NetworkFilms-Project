@@ -1,4 +1,3 @@
-// Caleb Causey | 4/21/2026
 // Wishlist:
 // The customer's wish-list of what to watch next (up to twenty movies) with the following requirements:
 // - Access the next movie in constant time (if it is marked as no longer available, a note should be displayed, 
@@ -17,6 +16,7 @@ public class Wishlist
 	{
 		n = 0;
 		front = 0;
+		
 	}
 	
 	public Movie front()
