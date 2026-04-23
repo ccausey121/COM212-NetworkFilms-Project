@@ -29,11 +29,16 @@ public class Wishlist
 	public Movie dequeue()
 	{
 	//returns and removes the first movie of wishlist
-		//check if it is empty first 
+		//check if it is empty first
+		if (isEmpty() == true)
+		{
+			System.out.println("Wishlist is empty!");
+			return null;
+		}
 		int temp = front;
 		front = (front + 1) % 20;
 		n--;
-		return q[temp]; 
+		return q[temp].getTitle; 
 	}
 	
 	public void enqueue(Movie x)
@@ -51,10 +56,8 @@ public class Wishlist
 		return n == 0;
 	}
 	
-	public void printWishlist() //we do not have a get Key method so we need to adjust
-	// we want to print the movies in the list
+	public void printWishlist()
 	//check if it is empty, if not keep going and print
-
 	{
 	// printWishlist method for Wishlist
 		int tail = (front + n) % 20;
