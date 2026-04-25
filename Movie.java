@@ -9,6 +9,9 @@ public class Movie
 	private int id;
 	private int rating;
 	private boolean available;
+	//For BST
+	private Customer left;
+	private Customer right;
 	
 	public Movie(String title0, int released0, int id0, int rating0, boolean available0) {
 		title = title0;
@@ -16,6 +19,9 @@ public class Movie
 		id = id0;
 		rating = rating0;
 		available = available0;
+
+		left = null; 
+		right = null;
 	}
 	
 	public String getTitle() {
@@ -57,6 +63,23 @@ public class Movie
 
 	public void setAvailable(boolean available0) {
 		available = available0;
+	}
+	//For BST:
+	public void setRight(Customer right0)
+	{
+		right = right0;
+	}
+	public Customer getRight()
+	{
+		return right;
+	}
+	public void setLeft(Customer left0)
+	{
+		left = left0;
+	}
+	public Customer getLeft()
+	{
+		return left;
 	}
 	
 }
