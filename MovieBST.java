@@ -115,7 +115,11 @@ public class MovieBST
 			System.out.println("Can't delete an available movie!");
 			return null;
 		} else {
-			delete2(root, p); //delete with release date 
+			if (p == root){
+				root = deleteRoot(root);
+			} else {
+				delete2(root, p); //delete with release date 
+			}
 			return p;
 		}
 	}
