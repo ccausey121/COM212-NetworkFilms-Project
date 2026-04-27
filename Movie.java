@@ -41,11 +41,11 @@ public class Movie
 		releaseDate = released0;
 	}
 
-	public int getId() {
+	public int getID() {
 		return id;
 	}
 
-	public void setId(int id0) {
+	public void setID(int id0) {
 		id = id0;
 	}
 
