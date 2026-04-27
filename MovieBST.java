@@ -5,8 +5,10 @@
 
 public class MovieBST
 {
-	private Node root;
-	public BST()
+	private Movie root;
+	private Movie newRoot;
+	
+	public MovieBST()
 	{
 		root = null;
 	}
@@ -16,22 +18,24 @@ public class MovieBST
 	//returns true if T is empty and false if it is not
 		return root == null;
 	}
+	
 	public void insert(Movie x)
 	{
 	//the node pointed to by p added in
-		if (root == null)
+		if (root == null) //if the tree is empty, the new movie is the root
 		{
 			root = x;
 		}
 		else
 		{
-			insert2(root, x);
+			insert2(root, x); //otherwise recursive function
 		}
 	}
+	
 	private void insert2 (Movie t, Movie x)
 	{
 	//recurssive method for insert
-		if (x.getReleaseDate() < t.getReleaseDate())
+		if (x.getReleaseDate() < t.getReleaseDate()) //compare release dates then, go left 
 		{
 			if (t.getLeft() == null)
 			{
@@ -42,7 +46,7 @@ public class MovieBST
 				insert2(t.getLeft(), x);
 			}
 		}
-		else
+		else //release dates compares, need to go right
 		{
 			if (t.getRight() == null)
 			{
@@ -54,87 +58,89 @@ public class MovieBST
 			}
 		}
 	}
-	public Movie search(int id)
+	
+	public Movie search(int releaseDate)
 	{
-		return searchr(root, id);
+		return searchr(root, releaseDate);
 	}
-	private Movie searchr(Movie t, int id)
+	private Movie searchr(Movie t, int releaseDate)
 	{
-		if (t == null)
+		if (t == null) 
 		{
 			return null;
 		}
-		else if (id == t.getID())
+		else if (releaseDate == t.getReleaseDate())
 		{
-			return t;
+			return t; //found the movie 
 		}
-		else if (date < t.getReleaseDate())
+		else if (releaseDate < t.getReleaseDate())
 		{
-			return searchr(t.getLeft(), date);
+			return searchr(t.getLeft(), releaseDate); //search left 
 		}
 		else
 		{
-			return searchr(t.getRight(), date);
+			return searchr(t.getRight(), releaseDate); //search right 
 		}
 	}
+	
 	public void traverse()
 	{
 	//prints the contents of T in order
 		traverser(root);
 		System.out.println();
 	}
+	
 	private void traverser(Movie t)
 	{
 	//recurssive method for traverse
 		if (t != null)
 		{
-			traverser(t.getLeft());
-			System.out.print(t.getReleaseDate());
-			System.out.print(" ");
-			traverser(t.getRight());
+			traverser(t.getLeft()); //left half
+			System.out.print(t.getReleaseDate() + " "); //print current movies
+			System.out.print(temp.getTitle());
+			System.out.println();
+			traverser(t.getRight()); //right half of tree
+		} else {
+			return;
 		}
 	}
+	
 	public void delete(Movie p)
 	{
 	//removes the node pointed to by p from the tree T
-		if (p.getAvailable == true)
-		{
+		if (p == null) { //does movie exist?
+			System.out.println("Movie not found");
+			
+		} else if (p.isAvailable()) { //cannot delete available ones
 			System.out.println("Can't delete an available movie!");
-		else if (p.getAvailable == false && root != null)
-		{
-			if (p == root)
-			{
-				root = deleteRoot(root);
-			}
-			else
-			{
-				delete2(root, p);
-			}
+			return null;
+		} else {
+			root = delete2(root, p); //delete with release date 
+			return p;
 		}
+		return null;
 	}
-	private Node deleteRoot(Movie t)
+	
+	private Movie deleteRoot(Movie t)
 	{
 	//method for delete
 		Node temp = t;
 		if (t.getRight() == null && t.getLeft() == null)
 		{
 			return null;
-		}
-		else if (t.getLeft() == null)
-		{
+			
+		} else if (t.getLeft() == null) {
 			t = t.getRight();
 			temp.setRight(null);
 			return t;
-		}
-		else if (t.getRight() == null)
-		{
+		} else if (t.getRight() == null) {
+		
 			t = t.getLeft();
 			temp.setLeft(null);
 			return t;
-		}
-		else
-		{
-			Movie newRoot = getSuccessor(t.getRight());
+		} else {
+			
+			newRoot = getSuccessor(t.getRight());
 			delete(newRoot);
 			newRoot.setLeft(t.getLeft());
 			newRoot.setRight(t.getRight());
@@ -144,6 +150,23 @@ public class MovieBST
 		}
 	}
 
+	public void delete2(Movie t, Movie p) {
+		//need for deleting movies that are not the root of the tree
+		//cases would be no childre, one child, or two children.  
+		if (t.getLeft() != null && p.getReleaseDate() < t.getReleaseDate()) {
+			if (p.getReleaseDate() == t.gteLeft().getReleaseDate()) {
+			} else {
+				delete2(t.getLeft(), p);
+			}
+		} else if (t.getRight() != null && p.getReleaseDate() > t.getReleaseDate()) {
+			if (p.getReleaseDate() == t.getRight().getReleaseDate()) {
+				t.setRight(deleteRoot(t.setRight()));
+			} else {
+				delete2(t.getRight(), p);
+			}
+		}
+	}
+	
 	private Movie getSuccessor(Movie t)
 	{
 	//returns the successor for deleteRoot
@@ -156,6 +179,7 @@ public class MovieBST
 			return getSuccessor(t.getLeft());
 		}
 	}
+	
 	public void printTree() 
 	{
 	//printTree method for BST
@@ -163,20 +187,24 @@ public class MovieBST
 		System.out.println();
 	}
 
-	private void printTree2(Node tree) 
+	private void printTree2(Movie tree) 
 	{
 	//printTree2 method for BST
 		if (tree != null) 
 		{
-			System.out.print(tree.getKey() + " ");
-		if (tree.getLeft() != null)
-			System.out.print("Left: " + tree.getLeft().getReleaseDate() + " ");
-		else
-			System.out.print("Left: null ");
-		if (tree.getRight() != null)
-			System.out.println("Right: " + tree.getRight().getReleaseDate() + " ");
-		else
-			System.out.println("Right: null ");
+			System.out.print(tree.getReleaseDate() + " ");
+			System.out.print(tree.getTitle() + " ");
+			
+			if (tree.getLeft() != null) {
+				System.out.print("Left: " + tree.getLeft().getReleaseDate() + " ");
+			} else {
+				System.out.print("Left: null ");
+			}
+			if (tree.getRight() != null) {
+				System.out.println("Right: " + tree.getRight().getReleaseDate() + " ");
+			} else
+				System.out.println("Right: null ")
+			}
 		printTree2(tree.getLeft());
 		printTree2(tree.getRight());
 		}	
