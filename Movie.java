@@ -1,4 +1,4 @@
-//Nicole, Caleb, Miriam 4/21/26
+//Nicole, Caleb, Miriam 4/30/26
 //This will be our movie class where we will have:
 //titles, release date, unique ID code, rotton tomatoes score, do we have the movie or not?
 
@@ -12,6 +12,8 @@ public class Movie
 	//For BST
 	private Movie left;
 	private Movie right;
+	//Hash 
+	private Movie next;
 	
 	public Movie(String title0, int released0, int id0, int rating0, boolean available0) {
 		title = title0;
@@ -22,6 +24,8 @@ public class Movie
 
 		left = null; 
 		right = null;
+
+		next = null;
 	}
 	
 	public String getTitle() {
@@ -69,7 +73,7 @@ public class Movie
 	{
 		right = right0;
 	}
-	public Customer getRight()
+	public Movie getRight()
 	{
 		return right;
 	}
@@ -77,9 +81,17 @@ public class Movie
 	{
 		left = left0;
 	}
-	public Customer getLeft()
+	public Movie getLeft()
 	{
 		return left;
+	}
+	public void setNext(Movie next0) 
+	{ 
+		next = next0;
+	}
+	public Movie getNext() 
+	{
+		return next;
 	}
 	
 }
