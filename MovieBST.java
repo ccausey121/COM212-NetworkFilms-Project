@@ -159,6 +159,7 @@ public class MovieBST
 		//cases would be no childre, one child, or two children.  
 		if (t.getLeft() != null && p.getReleaseDate() < t.getReleaseDate()) {
 			if (p.getReleaseDate() == t.getLeft().getReleaseDate()) {
+				t.setLeft(deleteRoot(t.getLeft()));
 			} else {
 				delete2(t.getLeft(), p);
 			}
