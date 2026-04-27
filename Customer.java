@@ -49,7 +49,7 @@ public class Customer
 	}
 
 	public Wishlist getWishlist() {
-		return wishlist
+		return wishlist;
 	}
 	// For BST:
 	public void setRight(Customer right0)
