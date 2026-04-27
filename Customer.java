@@ -1,28 +1,44 @@
+// //Nicole, Caleb, Miriam 4/30/26
 // Customer:
 // A class with identification and methods to change view info
 
 public class Customer
 {
+	//For Identification
 	private String name;
 	private String email;
 	private int card; //going to be 4 digits 
-
+	
+	//For BST
 	private Customer left;
 	private Customer right;
 	
-	private Wishlist wishlist;
+	//For Wishlist
+	private Movie wishlist[] = new Movie[20];
+	private int n;
+	private int front;
+
+	//For watchedList
+	private Movie watchFront;
+	private Movie watchEnd;
 	
 	public Customer(String name0, String email0, int card0) 
 	{
-		wishlist = new Wishlist(); //this is creating an empty wishlist that we will add movies into 
 		name = name0;
 		email = email0;
 		card = card0;
 
 		left = null; //nothing to start
-		right = null; 
+		right = null;
+		
+		n = 0;
+		front = 0;
+
+		watchFront = null;
+		watchEnd = null;
 	}
-	
+	//------------------------------------------------
+	//For Identification
 	public String getName()
 	{
 		return name;
@@ -48,10 +64,127 @@ public class Customer
 		return card;
 	}
 
-	public Wishlist getWishlist() {
-		return wishlist;
+	//-----------------------------------------------------
+	//For Wishlist
+	public Movie front()
+	{
+	//returns the first movie of wishlist
+	//check if empty and then check what is in the queue and return the front
+		if (n == 0)
+		{
+			System.out.println("You have an empty wishlist!"); //check if empty
+			return null;
+		} 
+		while (n > 0 && !wishlist[front].isAvailable()) { //removes unavailable movies from the wishlist
+			System.out.println(wishlist[front].getTitle() + " is currently unavailable and was removed from wishlist");
+			front = (front + 1) % 20;
+			n = n - 1;
+		}
+		if (n == 0) { //now that we removed check again if empty
+			System.out.println("You have an empty wishlist!");
+			return null;
+		}
+
+		System.out.println("Next to watch: " + wishlist[front].getTitle());
+		return wishlist[front]; //show the next available movie in the wishlist
 	}
-	// For BST:
+	
+	
+	
+	public void watchMovie()
+	{
+	//returns and removes the first movie of wishlist
+		//check if it is empty first
+		if (n == 0)
+		{
+			System.out.println("You have an empty wishlist!");
+		}
+		else
+		{
+			Movie temp = wishlist[front];
+			front = (front + 1) % 20;
+			n = n - 1;
+			System.out.println("You have watched " + temp.getTitle() + "!");
+			
+			addWatched(temp); //adding to the watched list
+		}
+	}
+	
+	public void addMovie(Movie x)
+	{
+	//x added as the last element
+	// we need to check if the wihlist is full first and then proceed:
+		if (n == 20)
+		{
+			System.out.println("You have a full wishlist!");
+		}
+		else
+		{
+			int tail = (front + n) % 20; //this would be the back of the queue
+			wishlist[tail] = x;
+			n++;
+			System.out.println(x.getTitle() + " has been added to wishlist!");
+		}
+	}
+	
+	public boolean isWishlistEmpty()
+	{
+	//returns true if wishlist is empty and false if it is not
+		System.out.println("You have an empty wishlist!");
+		return n == 0;
+	}
+	
+	public void printWishlist()
+	//check if it is empty, if not keep going and print
+	{
+		if (n == 0) {
+			System.out.println("Wishlist is empty");
+			return;
+		}
+	// printWishlist method for Wishlist
+		int tail = (front + n) % 20;
+		//System.out.println(front);
+		//System.out.println(tail);
+		if (front <= tail)
+			for(int i = front; i < tail; i++) 
+				System.out.println(wishlist[i].getID() + " " + wishlist[i].getTitle());
+		else 
+		{
+			for(int i = front; i < 20; i++) 
+				System.out.println(wishlist[i].getID()+ " " + wishlist[i].getTitle());          
+			for(int i = 0; i < tail; i++) 
+				System.out.println(wishlist[i].getID()+ " " + wishlist[i].getTitle());
+		}          
+	}
+
+	//for watchList queueLL
+
+	public void addWatched(Movie x) {
+		x.setNext(null); //set pointer to null
+		if (watchEnd == null) {//if the watchedList is empty
+			watchFront = x; //it will be first so therefore it is front and end 
+			watchEnd = x;
+		} else { //if it is not empty 
+			watchEnd.setNext(x); //the last one gets connected to the new one (adds it)
+			watchEnd = x; //becomes the end of the queue
+		}
+	}
+
+	public void printWatched() { //prints all movies customer has watched
+		if (watchFront == null) {
+			System.out.println("No movies watched yet.");
+			return;
+		}
+		Movie current = watchFront;
+		while (current!= null) { //printing each watched movie and going through the queue
+			System.out.println(current.getReleaseDate() + " " + current.getTitle());
+			current = current.getNext();
+		}
+	}
+
+	
+	//-----------------------------------------------------
+	//For BST:
 	public void setRight(Customer right0)
 	{
 		right = right0;
