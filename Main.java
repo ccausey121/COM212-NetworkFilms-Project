@@ -232,6 +232,10 @@ public class Main {
                             c.printWatched();
                         }
                     }
+                    int next0 = pauseAnswers(input);
+                    if (next0 == 2) {
+                    choice = 13;
+                    }
                 }
             }
             else if (choice == 13) {
