@@ -123,7 +123,7 @@ public class Customer
 			int tail = (front + n) % 20; //this would be the back of the queue
 			wishlist[tail] = x;
 			n++;
-			System.out.println(x.getTitle() + " has been added to wishlist!");
+			System.out.println(x.getTitle() + " has been added to " + getName() + "wishlist!");
 		}
 	}
 	

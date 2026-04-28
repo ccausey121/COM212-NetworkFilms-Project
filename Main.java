@@ -3,10 +3,10 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        public CustomerBST customerBST;
-        public MovieHeap movieHeap[];
-        public MovieBST movieBST;
-        public MovieHash movieHash[];
+        CustomerBST customerBST = new CustomerBST();
+        MovieHeap movieHeap = new MovieHeap();
+        MovieBST movieBST = new MovieBST();
+        MovieHash movieHash = new MovieHash();
 
         Scanner input = new Scanner(System.in);
 
@@ -51,7 +51,9 @@ public class Main {
                 boolean available0 = input.nextBoolean();
 
                 Movie m = new Movie(title0, date0, id0, rating0, available0);
-                network.addMovie(m);
+                movieBST.insertMovie(m);
+                movieHeap.insertMovieHeap(m);
+                movieHash.insertHash(m);
 
                 System.out.println("Movie added to Network Films");
 
@@ -76,7 +78,7 @@ public class Main {
                 System.out.print("Enter movie ID: ");
                 int id0 = input.nextInt();
 
-                Movie m = network.findMovieID(id0);
+                Movie m = movieHash.findMovieID(id0);
 
                 if (m != null) {
                     System.out.println(m.getTitle() + " " + m.getReleaseDate());
@@ -91,7 +93,7 @@ public class Main {
                 }
             }
             else if (choice == 4) {
-                network.printHeap();
+                movieHeap.printHeap();
                 int next0 = pauseAnswers(input);
                 if (next0 == 2) {
                     choice = 13;
@@ -99,7 +101,7 @@ public class Main {
                 }
             }
             else if (choice == 5) {
-                Movie m = network.removeLowestRated();
+                Movie m = movieHeap.removeLowestRated();
 
                 if (m != null) {
                     System.out.println("Lowest Rated movie removed from available list: " + m.getTitle());
@@ -113,7 +115,7 @@ public class Main {
                 }
             }
             else if (choice == 6) {
-                network.printHash();
+                movieHash.printHash();
                 int next0 = pauseAnswers(input);
                 if (next0 == 2) {
                     choice = 13;
@@ -130,7 +132,7 @@ public class Main {
                 int card0 = input.nextInt();
 
                 Customer c = new Customer(name0, email0, card0);
-                network.insertCustomer(c);
+                customerBST.insertCustomer(c);
 
                 System.out.println("Customer added.");
                 
@@ -143,7 +145,7 @@ public class Main {
                 System.out.print("Enter card number: ");
                 int card0 = input.nextInt();
 
-                Customer c = network.searchCustomer(card0);
+                Customer c = customerBST.searchCustomer(card0);
 
                 if (c!= null) {
                     System.out.println("Customer found: " + c.getName());
@@ -164,7 +166,7 @@ public class Main {
                 System.out.print("New name: ");
                 String name0 = input.nextLine();
 
-                network.updateCustomerName(card0, name0);
+                customerBST.updateCustomerName(card0, name0);
                 
                 int next0 = pauseAnswers(input);
                 if (next0 == 2) {
@@ -179,7 +181,7 @@ public class Main {
                 System.out.print("New email: ");
                 String email0 = input.nextLine();
 
-                network.updateCustomerEmail(card0, email0);
+                customerBST.updateCustomerEmail(card0, email0);
                 
                 int next0 = pauseAnswers(input);
                 if (next0 == 2) {
@@ -187,7 +189,7 @@ public class Main {
                 }
             } 
             else if (choice == 11) {
-                network.printCustomerBST();
+                customerBST.printCustomerBST();
 
                 int next0 = pauseAnswers(input);
                 if (next0 == 2) {
@@ -198,10 +200,11 @@ public class Main {
                 System.out.println("Enter card number: ");
                 int card0 = input.nextInt();
 
-                Customer c = network.searchCustomer(card0);
+                Customer c = customerBST.searchCustomer(card0);
                 if (c == null) {
                     System.out.println("Customer not found!");
                 } else {
+                    System.out.println("You have selected " + c.getName() + "'s wishlist!");
                     int wishChoice = 0;
 
                     while (wishChoice != 6) {
@@ -220,7 +223,7 @@ public class Main {
                             System.out.print("Movie ID: ");
                             int id0 = input.nextInt();
 
-                            Movie m = network.findMovieID(id0);
+                            Movie m = movieHash.findMovieID(id0);
                             if (m != null) {
                                 c.addMovie(m);
                             } else {
@@ -239,10 +242,10 @@ public class Main {
                         else if (wishChoice == 5) {
                             c.printWatched();
                         }
-                        int next0 = pauseAnswers(input);
-                        if (next0 == 2) {
-                            choice = 13;
-                        }
+                    }
+                    int next0 = pauseAnswers(input);
+                    if (next0 == 2) {
+                        choice = 13;
                     }
                 }
             }
