@@ -59,7 +59,7 @@ public class Main {
             }
 
             else if (choice == 2) {
-                if network.isMovieTreeEmpty(){
+                if (network.isMovieTreeEmpty()){
                     System.out.println("Movie list is empty");
                 } else {
                     network.printMovies(); //prints movies by release date
