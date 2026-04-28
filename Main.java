@@ -92,6 +92,7 @@ public class Main {
                 int next0 = pauseAnswers(input);
                 if (next0 == 2){
                     choice = 13;
+                }
             }
             else if (choice == 5) {
                 Movie m = network.removeLowestRated();
