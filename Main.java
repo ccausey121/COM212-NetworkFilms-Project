@@ -3,8 +3,11 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+        public CustomerBST customerBST;
+        public MovieHeap movieHeap[];
+        public MovieBST movieBST;
+        public MovieHash movieHash[];
 
-        NetworkFilms network = new NetworkFilms();
         Scanner input = new Scanner(System.in);
 
         int choice = 0; //storing options 
@@ -59,10 +62,10 @@ public class Main {
             }
 
             else if (choice == 2) {
-                if (network.isMovieTreeEmpty()){
+                if (movieBST.isMovieTreeEmpty()){
                     System.out.println("Movie list is empty");
                 } else {
-                    network.printMovies(); //prints movies by release date
+                    movieBST.printMovies(); //prints movies by release date
                 }
                 int next0 = pauseAnswers(input);
                 if (next0 == 2) {
@@ -90,8 +93,9 @@ public class Main {
             else if (choice == 4) {
                 network.printHeap();
                 int next0 = pauseAnswers(input);
-                if (next0 == 2){
+                if (next0 == 2) {
                     choice = 13;
+                
                 }
             }
             else if (choice == 5) {
