@@ -59,8 +59,8 @@ public class Main {
             }
 
             else if (choice == 2) {
-                if network.isMovieListEmpty(){
-                    Sytsem.out.println("Movie list is empty");
+                if network.isMovieTreeEmpty(){
+                    System.out.println("Movie list is empty");
                 } else {
                     network.printMovies(); //prints movies by release date
                 }
@@ -89,6 +89,7 @@ public class Main {
             }
             else if (choice == 4) {
                 network.printHeap();
+                
             }
             else if (choice == 5) {
                 Movie m = network.removeLowestRated();
@@ -231,10 +232,10 @@ public class Main {
                         else if (wishChoice == 5) {
                             c.printWatched();
                         }
-                    }
-                    int next0 = pauseAnswers(input);
-                    if (next0 == 2) {
-                    choice = 13;
+                        int next0 = pauseAnswers(input);
+                        if (next0 == 2) {
+                            choice = 13;
+                        }
                     }
                 }
             }
