@@ -206,7 +206,7 @@ public class Main {
                         System.out.println("2: See next movie: ");
                         System.out.println("3: Watch/ remove next movie: ");
                         System.out.println("4: Print wishlist: ");
-                        System.out.println("5: P{rint watched list");
+                        System.out.println("5: Print watched list");
                         System.out.println("6: BACK");
                         System.out.print("Enter Choice: ");
 
