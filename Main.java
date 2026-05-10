@@ -512,7 +512,7 @@ public class Main
 							try
 							{
 								wishChoice = input.nextInt();
-								if (wishChoice =< 6 || wishChoice => 1)
+								if (wishChoice <= 6 || wishChoice >= 1)
 								{
 									valid = true;
 								}
@@ -598,8 +598,11 @@ public class Main
 				System.out.println("Invalid Choice");
 			}
 			input.close();
+			
+			}
 		}
-		public static int pauseAnswers(Scanner input)
+		
+		private static int pauseAnswers(Scanner input)
 		{
 			System.out.println();
 			System.out.println("1: Back to options");
@@ -629,5 +632,5 @@ public class Main
 			input.nextLine();
 			
 			return choice;
-		}
+		}	
 	}
