@@ -23,7 +23,7 @@ public class Customer implements Serializable
 	private Movie watchFront;
 	private Movie watchEnd;
 	
-	public Customer(String name0, String email0) 
+	public Customer(String name0, String email0, int card0) 
 	{
 		name = name0;
 		email = email0;
