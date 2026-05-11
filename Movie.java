@@ -10,11 +10,12 @@ public class Movie implements Serializable
 	private int id;
 	private int rating;
 	private boolean available;
-	//For BST
+	//For RDBST
 	private Movie left;
 	private Movie right;
-	//Hash 
-	private Movie next;
+	//For IDBST 
+	private Movie idLeft;
+	private Movie idRight;
 	
 	public Movie(String title0, int released0, int rating0) {
 		title = title0;
@@ -26,7 +27,8 @@ public class Movie implements Serializable
 		left = null; 
 		right = null;
 
-		next = null;
+		idLeft = null;
+		idRight = null;
 	}
 	
 	public String getTitle() {
@@ -87,13 +89,22 @@ public class Movie implements Serializable
 		return left;
 	}
 	// For hash
-	public void setNext(Movie next0) 
+	public void setIDLeft(Movie idLeft0) 
 	{ 
-		next = next0;
+		idLeft = idLeft0;
 	}
-	public Movie getNext() 
+	public Movie getIDLeft() 
 	{
-		return next;
+		return idLeft;
 	}
+	public void setIDRight(Movie idRight0) 
+	{ 
+		idRight = idRight0;
+	}
+	public Movie getIDRight() 
+	{
+		return idRight;
+	}
+	
 	
 }
