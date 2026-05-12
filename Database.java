@@ -1,44 +1,56 @@
+import java.io.*;
+
 public class Database implements Serializable 
 {
-	Database data = new Database(x, y, z, n);
-        String filename = "data.ser";
+	public CustomerBST customerBST;
+	public MovieHeap movieHeap;
+	public MovieRDBST movieRDBST;
+	public MovieIDBST movieIDBST;
 
-        // Serialization
-	public void saveData()
+	public Database() {
+		customerBST = new CustomerBST();
+		movieHeap = new MovieHeap();
+		movieRDBST= new MovieRDBST();
+		movieIDBST = new MovieIDBST();
+	}
+
+	public static void saveData(Database data)
 	{
 		try 
 		{
 		    FileOutputStream file = new FileOutputStream("data.ser");
 		    ObjectOutputStream out = new ObjectOutputStream(file);
+
 		    out.writeObject(data);
+
 		    out.close();
-		    data.close();
 		    // Data has been saved!
 
 		} 
-		catch (IOException ex) 
+		catch (Exception e) 
 		{
 		    // IOException is caught
 		}
 	}
-	public void loadData()
+	public static Database loadData()
 	{
 		try 
 		{
 		    FileInputStream file = new FileInputStream("data.ser");
 		    ObjectInputStream in = new ObjectInputStream(file);
-		    data1 = (Database) in.readObject();
-		    in.close();
+
+		    Database data = (Database) in.readObject();
+		    
+			in.close();
 		    file.close();
+			return data;
 		    // Data has been loaded!
 		} 
-		catch (IOException ex) 
+		catch (Exception e) 
 		{
+			return new Database();
 		    // IOException is caught
 		} 
-		catch (ClassNotFoundException ex) 
-		{
-		    // ClassNotFoundException is caught
-		}
+
 	}
 }

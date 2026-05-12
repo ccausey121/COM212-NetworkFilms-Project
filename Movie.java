@@ -16,19 +16,23 @@ public class Movie implements Serializable
 	//For IDBST 
 	private Movie idLeft;
 	private Movie idRight;
+
+	private Movie next;
 	
-	public Movie(String title0, int released0, int rating0) {
+	public Movie(String title0, int released0, int id0, int rating0) {
 		title = title0;
 		releaseDate = released0;
 		id = id0;
 		rating = rating0;
-		available = available0;
+		available = false;
 
 		left = null; 
 		right = null;
 
 		idLeft = null;
 		idRight = null;
+
+		next = null;
 	}
 	
 	public String getTitle() {
@@ -105,6 +109,12 @@ public class Movie implements Serializable
 	{
 		return idRight;
 	}
-	
-	
+	public void setNext(Movie next0)
+	{ 
+		next = next0;
+	}
+	public Movie getNext()
+	{ 
+		return next;
+	}
 }
